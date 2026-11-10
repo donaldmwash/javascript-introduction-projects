@@ -1,23 +1,21 @@
-# JavaScript & Frontend Projects
+# JavaScript & Full-Stack Projects
 
-A collection of projects by [Donald Mwashegha](https://github.com/donaldmwash), ranging from JavaScript practice applications to larger portfolio builds.
+A curated collection of work by [Donald Mwashegha](https://github.com/donaldmwash), from JavaScript fundamentals to complete application builds.
 
-## Featured project
+## Featured applications
+
+### [TaskFlow — Full-Stack Team Workspace](./taskflow-fullstack/)
+
+A full-stack task management application with React, TypeScript, Express, PostgreSQL and Prisma. Includes account registration, private workspaces, session cookies, task management, validation, and Docker-based local database setup.
 
 ### [LedgerFlow — Finance Reconciliation Platform](./finance-reconciliation-platform/)
 
-A React + TypeScript application for reconciling bank statement and cashbook/ledger CSV exports. It includes transaction matching, exception review, summary totals, CSV report export, unit tests, and GitHub Actions CI.
-
-**Run locally**
-
-```bash
-cd finance-reconciliation-platform
-npm install
-npm run dev
-```
-
-See the [LedgerFlow README](./finance-reconciliation-platform/README.md) for full setup instructions, CSV format, and project details.
+A finance-focused React and TypeScript application for comparing bank statement and ledger exports, reviewing exceptions, and exporting reconciliation reports.
 
 ## Other practice projects
 
-The folders in this repository contain smaller JavaScript learning projects. LedgerFlow is the current featured project and the recommended starting point for reviewing my application-development work.
+The remaining folders contain smaller JavaScript learning applications. The two featured projects above are the recommended starting points for reviewing my application-development work.
+
+## Author
+
+Donald Mwashegha · [GitHub](https://github.com/donaldmwash)
