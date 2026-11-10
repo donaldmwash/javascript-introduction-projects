@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 dotenv.config({ path: "../../.env" });
 import express from "express";
 import cors from "cors";
@@ -9,6 +8,10 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
+import dotenv from "dotenv";
+import { createTaskSchema, loginSchema, registerSchema, updateTaskSchema } from "./schemas.js";
+
+dotenv.config({ path: "../../.env" });
 
 const environmentSchema = z.object({
   DATABASE_URL: z.string().min(1),
@@ -43,34 +46,6 @@ const cookieOptions = {
   path: "/",
   maxAge: 7 * 24 * 60 * 60 * 1000
 };
-
-const registerSchema = z.object({
-  name: z.string().trim().min(2).max(80),
-  email: z.string().email().transform((value) => value.toLowerCase()),
-  password: z.string().min(10).max(128)
-});
-
-const loginSchema = z.object({
-  email: z.string().email().transform((value) => value.toLowerCase()),
-  password: z.string().min(1).max(128)
-});
-
-const createTaskSchema = z.object({
-  title: z.string().trim().min(2).max(120),
-  description: z.string().trim().max(2000).optional(),
-  priority: z.enum(["LOW", "MEDIUM", "HIGH", "URGENT"]).default("MEDIUM"),
-  dueDate: z.string().datetime().optional()
-});
-
-const updateTaskSchema = z.object({
-  title: z.string().trim().min(2).max(120).optional(),
-  description: z.string().trim().max(2000).nullable().optional(),
-  status: z.enum(["TODO", "IN_PROGRESS", "DONE"]).optional(),
-  priority: z.enum(["LOW", "MEDIUM", "HIGH", "URGENT"]).optional(),
-  dueDate: z.string().datetime().nullable().optional()
-}).refine((value) => Object.keys(value).length > 0, {
-  message: "Provide at least one field to update."
-});
 
 type Session = {
   userId: string;
