@@ -25,5 +25,9 @@ jobs:
         with:
           node-version: 20
       - run: npm install
+      - name: Write CI environment file
+        run: |
+          printf 'DATABASE_URL=%s\n' "$DATABASE_URL" > .env
+          printf 'JWT_SECRET=%s\n' "$JWT_SECRET" >> .env
       - run: npm test
       - run: npm run build
