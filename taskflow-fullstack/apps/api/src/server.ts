@@ -1,4 +1,4 @@
-dotenv.config({ path: "../../.env" });
+import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -8,7 +8,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
-import dotenv from "dotenv";
 import { createTaskSchema, loginSchema, registerSchema, updateTaskSchema } from "./schemas.js";
 
 dotenv.config({ path: "../../.env" });
