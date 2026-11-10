@@ -4,11 +4,11 @@ A curated collection of work by [Donald Mwashegha](https://github.com/donaldmwas
 
 ## Featured applications
 
-### [TaskFlow — Full-Stack Task Workspace](./taskflow-fullstack/)
+### [TaskFlow — Full-Stack Task Workspace](https://github.com/donaldmwash/taskflow-fullstack-project)
 
 A full-stack task management application with React, TypeScript, Express, PostgreSQL and Prisma. Includes account registration, private workspaces, session cookies, task management, validation, and Docker-based local database setup.
 
-### [LedgerFlow — Finance Reconciliation Platform](./finance-reconciliation-platform/)
+### [LedgerFlow — Finance Reconciliation Platform](https://github.com/donaldmwash/ledgerflow-finance-reconciliation)
 
 A finance-focused React and TypeScript application for comparing bank statement and ledger exports, reviewing exceptions, and exporting reconciliation reports.
 
