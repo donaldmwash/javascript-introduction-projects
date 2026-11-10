@@ -14,7 +14,7 @@ A finance-focused React and TypeScript application for comparing bank statement 
 
 ## Other practice projects
 
-The remaining folders contain smaller JavaScript learning applications. The two featured projects above are the recommended starting points for reviewing my application-development work.
+The remaining folders contain smaller JavaScript learning applications. The two featured applications now live in their own repositories. This repository remains for smaller JavaScript learning projects.
 
 ## Author
 
