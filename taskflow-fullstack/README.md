@@ -1,13 +1,53 @@
-# TaskFlow — Full-Stack Team Workspace
+# TaskFlow — Full-Stack Task Workspace
 
-A focused full-stack task management application built with React, TypeScript, Express, PostgreSQL and Prisma. Users register, receive a private workspace, create tasks, set priorities and due dates, update progress, search, filter and delete tasks.
+TaskFlow is a full-stack task management application. Users register, receive a private workspace, create tasks, set priorities and due dates, update progress, search, filter, and delete tasks. Data is stored in PostgreSQL.
+
+## Stack
+
+React 18, TypeScript, Vite, Node.js, Express, PostgreSQL, Prisma, Zod, bcrypt, signed HTTP-only cookies, Vitest and Docker.
 
 ## Run locally
-Copy .env.example to .env, set a strong JWT_SECRET, start PostgreSQL with Docker Compose, run npm install, npm run db:generate, npm run db:migrate, then npm run dev. The web client runs on port 5173 and the API on port 4000.
 
-## Engineering
-Passwords are bcrypt-hashed. Authentication uses an HTTP-only signed cookie. Every task query is scoped to the workspace in the verified session. Request bodies are validated, authentication endpoints are rate limited, and Helmet and a CORS allow-list are enabled.
+1. Copy .env.example to .env and set a long random JWT_SECRET.
+2. Start PostgreSQL with docker compose up -d database.
+3. Install dependencies with npm install.
+4. Generate Prisma Client with npm run db:generate.
+5. Apply the committed migration with npm run db:migrate.
+6. Start the API and web client with npm run dev.
 
-This is a portfolio demo, not a production SaaS. Add CSRF protection, password recovery, email verification, invitations, role administration, structured logging and end-to-end tests before production use.
+The web client runs at http://localhost:5173. The API runs at http://localhost:4000.
 
-Built by Donald Mwashegha — https://github.com/donaldmwash.
+## API
+
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET | /api/health | Health check |
+| POST | /api/auth/register | Register and create a private workspace |
+| POST | /api/auth/login | Sign in |
+| GET | /api/auth/me | Read the current session |
+| POST | /api/auth/logout | Clear the session cookie |
+| GET | /api/tasks | List tasks in the current workspace |
+| POST | /api/tasks | Create a task |
+| PATCH | /api/tasks/:id | Update a task |
+| DELETE | /api/tasks/:id | Delete a task |
+
+## Engineering decisions
+
+- Passwords are stored as bcrypt hashes, not plain text.
+- The session is held in a signed HTTP-only cookie.
+- Task queries are scoped by the workspace ID in the verified session. The browser cannot choose another workspace by sending a different workspace ID.
+- Request bodies are validated with Zod before reaching Prisma.
+- Authentication endpoints are rate limited. Helmet and a CORS allow-list are enabled.
+- PostgreSQL changes are tracked in a committed Prisma migration.
+
+## Quality checks
+
+Run npm test for request-schema tests and npm run build for TypeScript checks and production builds. GitHub Actions runs these checks on changes to this project.
+
+## Production hardening still required
+
+This is a portfolio demonstration, not a production SaaS. Before production use, add CSRF protection appropriate to the deployment, password recovery, email verification, workspace invitations, role administration, structured logging, end-to-end tests and managed database backups.
+
+## Author
+
+Built by [Donald Mwashegha](https://github.com/donaldmwash).
