@@ -4,7 +4,7 @@ A curated collection of work by [Donald Mwashegha](https://github.com/donaldmwas
 
 ## Featured applications
 
-### [TaskFlow — Full-Stack Team Workspace](./taskflow-fullstack/)
+### [TaskFlow — Full-Stack Task Workspace](./taskflow-fullstack/)
 
 A full-stack task management application with React, TypeScript, Express, PostgreSQL and Prisma. Includes account registration, private workspaces, session cookies, task management, validation, and Docker-based local database setup.
 
