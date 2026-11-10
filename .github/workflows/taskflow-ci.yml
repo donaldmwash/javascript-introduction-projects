@@ -1,0 +1,29 @@
+name: TaskFlow CI
+
+on:
+  push:
+    paths:
+      - "taskflow-fullstack/**"
+      - ".github/workflows/taskflow-ci.yml"
+  pull_request:
+    paths:
+      - "taskflow-fullstack/**"
+      - ".github/workflows/taskflow-ci.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://taskflow:taskflow@localhost:5432/taskflow?schema=public
+      JWT_SECRET: ci-only-secret-value-that-is-long-enough-for-tests
+    defaults:
+      run:
+        working-directory: taskflow-fullstack
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm test
+      - run: npm run build
