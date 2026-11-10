@@ -239,6 +239,10 @@ app.delete("/api/tasks/:id", asyncRoute(async (request, response) => {
   return response.status(204).end();
 }));
 
+app.use((_request, response) => {
+  response.status(404).json({ error: "The requested endpoint does not exist." });
+});
+
 app.use((error: unknown, _request: express.Request, response: express.Response, _next: express.NextFunction) => {
   if (error instanceof z.ZodError) {
     return response.status(400).json({
